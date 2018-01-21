@@ -2,6 +2,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-include 'lib/config.php';
-include 'lib/router.php';
-include 'lib/template.php';
+require_once 'lib/config.php';
+require_once 'lib/router.php';
+require_once 'lib/template.php';
