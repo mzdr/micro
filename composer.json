@@ -8,9 +8,10 @@
         }
     ],
     "require": {
-        "adbario/php-dot-notation": "^2.0",
         "league/plates": "^3.3",
-        "bramus/router": "^1.3"
+        "bramus/router": "^1.3",
+        "samrap/gestalt": "^0.3.1",
+        "symfony/yaml": "^4.0"
     },
     "autoload": {
         "files": ["micro.php"]
