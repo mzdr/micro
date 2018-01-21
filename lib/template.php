@@ -8,7 +8,7 @@ use League\Plates\Extension\Asset;
 /**
  * Provides access to the Plates template engine.
  *
- * @return Plates
+ * @return \League\Plates\Engine
  * @see http://platesphp.com/
  */
 function template(): Engine {
