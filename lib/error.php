@@ -3,36 +3,23 @@
 namespace µ;
 
 use League\BooBoo\BooBoo;
+use League\BooBoo\Formatter\HtmlTableFormatter;
 
 /**
  * Custom error handler for PHP that allows for the execution of handlers
  * and formatters for viewing and managing errors in development and production.
  *
- * @param bool $reset Resets the current error handler.
  * @return BooBoo
  * @see https://github.com/thephpleague/booboo/
  */
-function error($reset = false): BooBoo {
+function error(): BooBoo {
     static $eh;
-    static $formatters = [
-        'html' => '\League\BooBoo\Formatter\HtmlFormatter',
-        'html_table' => '\League\BooBoo\Formatter\HtmlTableFormatter',
-        'json' => '\League\BooBoo\Formatter\JsonFormatter',
-        'cmd' => '\League\BooBoo\Formatter\CommandLineFormatter',
-        'null' => '\League\BooBoo\Formatter\NullFormatter'
-    ];
 
     if ($eh instanceof BooBoo === false) {
-        $eh = new BooBoo([]);
-    }
+        $eh = new BooBoo([new HtmlTableFormatter]);
 
-    if ($reset || empty($eh->getFormatters())) {
-        $eh->clearFormatters()
-           ->pushFormatter(new $formatters[config('error.formatter') ?? 'html_table'])
-           ->register();
+        $eh->register();
     }
 
     return $eh;
 }
-
-error();
