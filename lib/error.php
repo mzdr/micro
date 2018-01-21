@@ -3,8 +3,6 @@
 namespace µ;
 
 use League\BooBoo\BooBoo;
-use Gestalt\Util\ObserverInterface;
-use Gestalt\Util\Observable;
 
 /**
  * Custom error handler for PHP that allows for the execution of handlers
@@ -14,7 +12,7 @@ use Gestalt\Util\Observable;
  * @return BooBoo
  * @see https://github.com/thephpleague/booboo/
  */
-function error($reset = false) {
+function error($reset = false): BooBoo {
     static $eh;
     static $formatters = [
         'html' => '\League\BooBoo\Formatter\HtmlFormatter',
@@ -38,8 +36,3 @@ function error($reset = false) {
 }
 
 error();
-config()->attach(new class implements ObserverInterface {
-    public function update(Observable $config) {
-        error(true);
-    }
-});
