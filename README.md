@@ -19,9 +19,9 @@
 
     > BooBoo is an error handler for PHP that allows for the execution of handlers and formatters for viewing and managing errors in development and production. It won't end up in your stack trace, is built for logging, designed for extension and handles errors non-blocking by default.
 
-- Manage **routing** with [Bramus]’ [Router].
+- Manage **routing** with [FastRoute].
 
-    > A lightweight and simple object oriented PHP Router that supports static/dynamic route patterns, optional route subpatterns, subrouting, custom 404 handling and many more.
+    > A fast regular expression based request router for PHP. See this [article](http://nikic.github.io/2014/02/18/Fast-request-routing-using-regular-expressions.html) for more details.
 
 - Use _native_ PHP **templates** with [Plates].
 
@@ -38,6 +38,5 @@
 [Gestalt]: https://github.com/samrap/gestalt
 [Medoo]: https://github.com/catfan/Medoo
 [BooBoo]: https://github.com/thephpleague/booboo
-[Bramus]: https://github.com/bramus
-[Router]: https://github.com/bramus/router
+[FastRoute]: https://github.com/nikic/FastRoute
 [Plates]: https://github.com/thephpleague/plates

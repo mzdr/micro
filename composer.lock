@@ -4,54 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "25cb8052420650078ca6627a3980ec47",
+    "content-hash": "5c9031dc8ccf62bdf92f1cf0426dcd4a",
     "packages": [
-        {
-            "name": "bramus/router",
-            "version": "1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bramus/router.git",
-                "reference": "1d67c5e50f979c8137dcf3cadcb06cd3c5cfe330"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bramus/router/zipball/1d67c5e50f979c8137dcf3cadcb06cd3c5cfe330",
-                "reference": "1d67c5e50f979c8137dcf3cadcb06cd3c5cfe330",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/php-code-coverage": "^2.1.0",
-                "phpunit/phpunit": "4.8.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Bramus": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bram(us) Van Damme",
-                    "email": "bramus@bram.us",
-                    "homepage": "http://www.bram.us"
-                }
-            ],
-            "description": "A lightweight and simple object oriented PHP Router",
-            "homepage": "https://github.com/bramus/router",
-            "keywords": [
-                "router",
-                "routing"
-            ],
-            "time": "2017-12-21T20:37:23+00:00"
-        },
         {
             "name": "catfan/medoo",
             "version": "v1.5.4",
@@ -210,6 +164,49 @@
                 "views"
             ],
             "time": "2016-12-28T00:14:17+00:00"
+        },
+        {
+            "name": "nikic/fast-route",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/FastRoute.git",
+                "reference": "b5f95749071c82a8e0f58586987627054400cdf6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/b5f95749071c82a8e0f58586987627054400cdf6",
+                "reference": "b5f95749071c82a8e0f58586987627054400cdf6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FastRoute\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov",
+                    "email": "nikic@php.net"
+                }
+            ],
+            "description": "Fast request router for PHP",
+            "keywords": [
+                "router",
+                "routing"
+            ],
+            "time": "2017-01-19T11:35:12+00:00"
         },
         {
             "name": "psr/log",
