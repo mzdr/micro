@@ -14,7 +14,7 @@ function db(): Medoo {
     static $db;
 
     if ($db instanceof Medoo === false) {
-        $db = new Medoo(config('db'));
+        $db = new Medoo(config()->get('db'));
     }
 
     return $db;

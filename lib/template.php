@@ -16,12 +16,12 @@ function template(): Engine {
 
     if ($plates instanceof Engine === false) {
         $defaultDirectory = join(DIRECTORY_SEPARATOR, [getcwd(), 'views']);
-        $assetsPath = config('paths.assets');
+        $assetsPath = config()->get('paths.assets');
 
         if (is_readable($defaultDirectory)) {
             $plates = new Engine($defaultDirectory);
         } else {
-            $plates = new Engine(config('paths.views'));
+            $plates = new Engine(config()->get('paths.views'));
         }
 
         if ($assetsPath) {

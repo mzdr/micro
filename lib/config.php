@@ -10,11 +10,10 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * Provides access to the Gestalt configuration package.
  *
- * @param array ...$args
- * @return \Gestalt\Configuration|mixed
+ * @return Configuration
  * @see https://github.com/samrap/gestalt
  */
-function config(...$args) {
+function config() {
     static $config;
 
     if ($config instanceof Configuration === false) {
@@ -24,11 +23,11 @@ function config(...$args) {
              * Appends a single configuration file or all files
              * from a given directory into the current configuration.
              *
-             * @param $path Path of configuration file or directory.
+             * @param string|SplFileInfo $path Path of configuration file or directory.
              * @param string $preferredExtension Preferred files to use when scanning directory. Defaults to `php`.
-             * @return self
+             * @return Configuration
              */
-            public function append($path, string $preferredExtension = 'php'): self {
+            public function append($path, string $preferredExtension = 'php'): Configuration {
                 $loaders = [
                     'ini' => function($file) { return parse_ini_file($file, true); },
                     'json' => function($file) { return json_decode(file_get_contents($file)); },
@@ -71,25 +70,5 @@ function config(...$args) {
         };
     }
 
-    $count = count($args);
-
-    if ($count === 0) {
-        return $config;
-    }
-
-    if ($count === 2) {
-        $config->set(...$args);
-
-        return $config;
-    }
-
-    if (is_array($args[0])) {
-        foreach ($args[0] as $key => $value) {
-            config($key, $value);
-        }
-
-        return $config;
-    }
-
-    return $config[$args[0]];
+    return $config;
 }

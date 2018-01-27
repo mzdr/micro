@@ -15,7 +15,7 @@ $observer = new class implements ObserverInterface {
     ];
 
     public function update(Observable $config) {
-        $formatter = config('error.formatter');
+        $formatter = config()->get('error.formatter');
 
         if (isset($this->formatters[$formatter])) {
             error()->clearFormatters()
