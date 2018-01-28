@@ -37,9 +37,9 @@ function router(): RouteCollector {
                 return [200];
             }
 
-            public function dispatch() {
-                $httpMethod = $_SERVER['REQUEST_METHOD'];
-                $uri = rawurldecode(strtok($_SERVER["REQUEST_URI"],'?'));
+            public function dispatch(string $httpMethod = null, string $uri = null) {
+                $httpMethod = $httpMethod ?? $_SERVER['REQUEST_METHOD'];
+                $uri = rawurldecode(strtok($uri ?? $_SERVER['REQUEST_URI'],'?'));
                 $data = $this->getData();
                 $useCache = config()->get('router.cache', false);
 
