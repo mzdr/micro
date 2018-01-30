@@ -21,8 +21,8 @@ function db(): Medoo {
 }
 
 /**
- * @see \µ\db
+ * @see \µ\db()
  */
-function database(...$args): Medoo {
-    return db(...$args);
+function database(): Medoo {
+    return db();
 }

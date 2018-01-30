@@ -58,7 +58,7 @@ function router(): RouteCollector {
                 if (file_exists($cacheFile) === false) {
                     file_put_contents(
                         $cacheFile,
-                        sprintf('<?php return %s ;', var_export($data, true))
+                        sprintf('<?php return %s;', var_export($data, true))
                     );
                 }
 
