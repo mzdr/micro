@@ -28,6 +28,26 @@
     > Plates is designed for developers who prefer to use native PHP templates over compiled template languages, such as Twig or Blade. It supports layouts, inheritance, namespaces, data sharing and comes with built-in escaping helpers.
 
 <br>
+
+## Requirements
+
+[PHP] 7+ and preferably [URL Rewriting] enabled.
+
+<br>
+
+## Installation
+
+It is recommended that you install this framework using [Composer].
+
+`composer require mzdr/micro`
+
+<br>
+
+## License
+
+This project is licensed under [MIT license].
+
+<br>
 <br>
 <br>
 
@@ -40,3 +60,7 @@
 [BooBoo]: https://github.com/thephpleague/booboo
 [FastRoute]: https://github.com/nikic/FastRoute
 [Plates]: https://github.com/thephpleague/plates
+[PHP]: http://php.net
+[Composer]: https://getcomposer.org/doc/00-intro.md
+[URL Rewriting]: https://github.com/mzdr/micro/wiki/URL-Rewriting
+[MIT license]: ./LICENSE
