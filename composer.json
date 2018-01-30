@@ -17,6 +17,9 @@
         "catfan/Medoo": "^1.5",
         "nikic/fast-route": "^1.2"
     },
+    "platform": {
+        "php": "^7.0"
+    },
     "autoload": {
         "files": ["micro.php"]
     }
