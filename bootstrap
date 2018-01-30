@@ -1,0 +1,56 @@
+#!/usr/bin/env php
+<?php
+
+const space = PHP_EOL . PHP_EOL;
+const blank = __DIR__ . DIRECTORY_SEPARATOR . 'blank';
+
+function recursive_copy($source, $destination) {
+    if (is_link($source)) {
+        symlink(readlink($source), $destination);
+
+        return;
+    }
+
+    if (is_dir($source)) {
+        if (is_dir($destination) === false) {
+            mkdir($destination);
+        }
+
+        foreach (scandir($source) as $file) {
+            if ($file === '.' || $file === '..') {
+                continue;
+            }
+
+            recursive_copy(
+                $source . DIRECTORY_SEPARATOR . $file,
+                $destination . DIRECTORY_SEPARATOR . $file
+            );
+        }
+
+        return;
+    }
+
+    if (is_file($source)) {
+        copy($source, $destination);
+        printf('%s -> %s' . PHP_EOL, $source, $destination);
+
+        return;
+    }
+
+    printf('Warning: Cannot copy “%s” (unknown file type).' . PHP_EOL, $source);
+}
+
+printf('Do you want to create a blank µ project? [Y/n] ');
+
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+    $go = stream_get_line(STDIN, 1024, PHP_EOL);
+} else {
+    $go = readline();
+}
+
+if ($go !== 'n') {
+    printf(space);
+    recursive_copy(blank, getcwd());
+}
+
+printf('%sDone. 👍%s', space, space);
