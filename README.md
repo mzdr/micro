@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/mzdr/micro">
-        <img src="media/logo.svg" alt="micro">
+        <img src="media/logo.svg" width="256" alt="micro">
     </a><br><br>
 </p>
 <p align="center">A tiny multi-tool for your next big <a href="http://php.net/"><em>PHP</em></a> adventure.</p><br>
