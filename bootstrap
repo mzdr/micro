@@ -1,17 +1,20 @@
 #!/usr/bin/env php
 <?php
 
-const space = PHP_EOL . PHP_EOL;
-const blank = __DIR__ . DIRECTORY_SEPARATOR . 'blank';
+$pkg = json_decode(file_get_contents(__DIR__ . '/composer.json'));
 
 function recursive_copy($source, $destination) {
+    $op = [$source, $destination];
+
     if (is_link($source)) {
         symlink(readlink($source), $destination);
 
-        return;
+        return [];
     }
 
     if (is_dir($source)) {
+        $results = [$op];
+
         if (is_dir($destination) === false) {
             mkdir($destination);
         }
@@ -21,26 +24,42 @@ function recursive_copy($source, $destination) {
                 continue;
             }
 
-            recursive_copy(
+            $subResults = recursive_copy(
                 $source . DIRECTORY_SEPARATOR . $file,
                 $destination . DIRECTORY_SEPARATOR . $file
             );
+
+            if (count($subResults) === 2 && is_string($subResults[0])) {
+                $results[] = $subResults;
+            } else {
+                $results = array_merge($results, $subResults);
+            }
+
         }
 
-        return;
+        return $results;
     }
 
     if (is_file($source)) {
-        copy($source, $destination);
-        printf('%s -> %s' . PHP_EOL, $source, $destination);
+        copy(...$op);
 
-        return;
+        return $op;
     }
 
-    printf('Warning: Cannot copy “%s” (unknown file type).' . PHP_EOL, $source);
+    return [null, sprintf('Warning: Cannot copy “%s” (unknown file type).', $source)];
 }
 
-printf('Do you want to create a blank µ project? [Y/n] ');
+printf("\e[35m
+
+    ╔═══════════════════════════╗
+    ║                           ║
+    ║    \e[97mµ framework \e[90m(v%s)\e[35m   ║
+    ║                           ║
+    ╚═══════════════════════════╝\e[0m
+
+
+    Do you want to bootstrap a blank \e[35mµ\e[0m project? [Y/n] ", $pkg->version);
+
 
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
     $go = stream_get_line(STDIN, 1024, PHP_EOL);
@@ -48,9 +67,34 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
     $go = readline();
 }
 
-if ($go !== 'n') {
-    printf(space);
-    recursive_copy(blank, getcwd());
+if ($go && strtolower($go) !== 'Y') {
+    printf("
+    Okay, cool. 👋
+");
+
+    return;
 }
 
-printf('%sDone. 👍%s', space, space);
+printf("\e[90m
+
+    %s\e[0m
+    
+    Done. 👍
+",
+    implode(
+        "\n    ",
+        array_map(
+            function($item) {
+                return sprintf(
+                    "%s \e[97m→\e[90m %s",
+                    $item[0],
+                    str_replace(getcwd(), '.', $item[1])
+                );
+            },
+            recursive_copy(
+                join(DIRECTORY_SEPARATOR, [__DIR__, 'boilerplates', 'blank']),
+                getcwd()
+            )
+        )
+    )
+);
