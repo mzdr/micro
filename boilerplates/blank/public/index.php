@@ -48,7 +48,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 
 /**
- * Load a configuration file.
+ * Load a configuration file. Currently supported file types are .php, .ini, .json and .yaml.
  */
 config()->append('../configs/dev.yaml');
 
@@ -69,14 +69,6 @@ template()->addData([
  */
 router()->get('/', function() {
     echo template()->render('index');
-});
-
-
-/**
- * Force a trailing slash for all requests.
- */
-router()->get('/{uri:.*[^\/]$}', function($uri) {
-    exit(header(sprintf('Location: /%s/', $uri)));
 });
 
 

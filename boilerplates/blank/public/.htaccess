@@ -87,6 +87,41 @@
 
 </IfModule>
 
+
+# ----------------------------------------------------------------------
+# | Rewrite engine                                                     |
+# ----------------------------------------------------------------------
+
+# (1) Turn on the rewrite engine (this is necessary in order for
+#     the `RewriteRule` directives to work).
+#
+#     https://httpd.apache.org/docs/current/mod/mod_rewrite.html#RewriteEngine
+#
+# (2) Enable the `FollowSymLinks` option if it isn't already.
+#
+#     https://httpd.apache.org/docs/current/mod/core.html#options
+#
+# (3) If your web host doesn't allow the `FollowSymlinks` option,
+#     you need to comment it out or remove it, and then uncomment
+#     the `Options +SymLinksIfOwnerMatch` line (4), but be aware
+#     of the performance impact.
+#
+#     https://httpd.apache.org/docs/current/misc/perf-tuning.html#symlinks
+#
+# (4) Some cloud hosting services will require you set `RewriteBase`.
+#
+#     https://www.rackspace.com/knowledge_center/frequently-asked-question/why-is-modrewrite-not-working-on-my-site
+#     https://httpd.apache.org/docs/current/mod/mod_rewrite.html#rewritebase
+#
+# (5) Depending on how your server is set up, you may also need to
+#     use the `RewriteOptions` directive to enable some options for
+#     the rewrite engine.
+#
+#     https://httpd.apache.org/docs/current/mod/mod_rewrite.html#rewriteoptions
+#
+# (6) Set %{ENV:PROTO} variable, to allow rewrites to redirect with the
+#     appropriate schema automatically (http or https).
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     #RewriteBase /
@@ -102,10 +137,33 @@
     # To understand why this is important and even a better solution than
     # using something like `*.css?v231`, please see:
     # http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.+)\.(\w+)\.(bmp|css|cur|gif|ico|jpe?g|m?js|png|svgz?|webp|webmanifest)$ $1.$3 [L]
 
-    # Allow any files or directories that exist to be displayed directly
+
+    # ----------------------------------------------------------------------
+    # | Enforce a trailing slash for all URLs                              |
+    # ----------------------------------------------------------------------
+
+    # Recommended to avoid duplicate content. Make sure to be consistent
+    # and use it in your internal links in order to avoid unnecessary redirects.
+    #
+    # https://webmasters.googleblog.com/2010/04/to-slash-or-not-to-slash.html
+
+    # Adjust the second condition if you want to exclude requests for
+    # specific file type extensions.
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !\.(php|html?|jpg|gif|svg|png|bmp|ico|css|js)$
+
+    RewriteRule ^(.*)([^/])$ /$1$2/ [L,R=301]
+
+
+    # ----------------------------------------------------------------------
+    # | Redirect everything that doesn’t exist to the index.php            |
+    # ----------------------------------------------------------------------
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
