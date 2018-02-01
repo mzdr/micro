@@ -87,7 +87,7 @@ printf("\e[90m
             function($item) {
                 return sprintf(
                     "%s \e[97m→\e[90m %s",
-                    $item[0],
+                    str_replace(__DIR__, '.', $item[0]),
                     str_replace(getcwd(), '.', $item[1])
                 );
             },
