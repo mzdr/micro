@@ -1,0 +1,7 @@
+{
+  "name": "micro",
+  "short_name": "micro",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color" : "#fff"
+}
