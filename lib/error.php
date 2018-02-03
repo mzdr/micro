@@ -12,7 +12,8 @@ use League\BooBoo\Formatter\HtmlTableFormatter;
  * @return BooBoo
  * @see https://github.com/thephpleague/booboo/
  */
-function error(): BooBoo {
+function error(): BooBoo
+{
     static $eh;
 
     if ($eh instanceof BooBoo === false) {

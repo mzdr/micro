@@ -10,7 +10,8 @@ use Medoo\Medoo;
  * @return Medoo
  * @see https://github.com/catfan/Medoo
  */
-function db(): Medoo {
+function db(): Medoo
+{
     static $db;
 
     if ($db instanceof Medoo === false) {
@@ -23,6 +24,7 @@ function db(): Medoo {
 /**
  * @see \µ\db()
  */
-function database(): Medoo {
+function database(): Medoo
+{
     return db();
 }

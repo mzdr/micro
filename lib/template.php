@@ -11,7 +11,8 @@ use League\Plates\Extension\Asset;
  * @return Engine
  * @see http://platesphp.com/
  */
-function template(): Engine {
+function template(): Engine
+{
     static $plates;
 
     if ($plates instanceof Engine === false) {

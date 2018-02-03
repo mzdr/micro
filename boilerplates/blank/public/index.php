@@ -31,7 +31,6 @@
 
 namespace µ;
 
-
 /**
  * Starting timestamp for “performance” monitoring.
  */
@@ -67,7 +66,7 @@ template()->addData([
 /**
  * Register routes…
  */
-router()->get('/', function() {
+router()->get('/', function () {
     echo template()->render('index');
 });
 
@@ -85,7 +84,8 @@ list($statusCode) = router()->dispatch();
  *
  * @param array $data Additional template data.
  */
-function handle404(array $data = []) {
+function handle404(array $data = [])
+{
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 
     echo template()->render('404', $data);

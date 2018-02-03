@@ -15,15 +15,14 @@ use RuntimeException;
  * @return RouteCollector
  * @see https://github.com/nikic/FastRoute
  */
-function router(): RouteCollector {
+function router(): RouteCollector
+{
     static $router;
 
     if ($router instanceof RouteCollector === false) {
-        $router = new class(
-            new RouteParser,
-            new DataGenerator
-        ) extends RouteCollector {
-            private function handle($statusCode, $handler = null, $data = []) {
+        $router = new class(new RouteParser, new DataGenerator) extends RouteCollector {
+            private function handle($statusCode, $handler = null, $data = [])
+            {
                 if ($statusCode === Dispatcher::NOT_FOUND) {
                     return [404];
                 }
@@ -37,9 +36,10 @@ function router(): RouteCollector {
                 return [200];
             }
 
-            public function dispatch(string $httpMethod = null, string $uri = null) {
+            public function dispatch(string $httpMethod = null, string $uri = null)
+            {
                 $httpMethod = $httpMethod ?? $_SERVER['REQUEST_METHOD'];
-                $uri = rawurldecode(strtok($uri ?? $_SERVER['REQUEST_URI'],'?'));
+                $uri = rawurldecode(strtok($uri ?? $_SERVER['REQUEST_URI'], '?'));
                 $data = $this->getData();
                 $useCache = config()->get('router.cache', false);
 

@@ -13,7 +13,8 @@ use Symfony\Component\Yaml\Yaml;
  * @return Configuration
  * @see https://github.com/samrap/gestalt
  */
-function config() {
+function config()
+{
     static $config;
 
     if ($config instanceof Configuration === false) {
@@ -27,12 +28,21 @@ function config() {
              * @param string $preferredExtension Preferred files to use when scanning directory. Defaults to `php`.
              * @return Configuration
              */
-            public function append($path, string $preferredExtension = 'php'): Configuration {
+            public function append($path, string $preferredExtension = 'php'): Configuration
+            {
                 $loaders = [
-                    'ini' => function($file) { return parse_ini_file($file, true); },
-                    'json' => function($file) { return json_decode(file_get_contents($file)); },
-                    'php' => function($file) { return require $file; },
-                    'yaml' => function($file) { return Yaml::parseFile($file); }
+                    'ini' => function ($file) {
+                        return parse_ini_file($file, true);
+                    },
+                    'json' => function ($file) {
+                        return json_decode(file_get_contents($file));
+                    },
+                    'php' => function ($file) {
+                        return require $file;
+                    },
+                    'yaml' => function ($file) {
+                        return Yaml::parseFile($file);
+                    }
                 ];
 
                 $resource = $path instanceof SplFileInfo ? $path : new SplFileInfo($path);

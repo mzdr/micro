@@ -14,7 +14,8 @@ $observer = new class implements ObserverInterface {
         'null'       => '\League\BooBoo\Formatter\NullFormatter'
     ];
 
-    public function update(Observable $config) {
+    public function update(Observable $config)
+    {
         $formatter = config()->get('error.formatter');
 
         if (isset($this->formatters[$formatter])) {
