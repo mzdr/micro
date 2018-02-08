@@ -98,7 +98,7 @@ You’re in a hurry? Bootstrap a blank **µ** project!
     - Create a virtual host and point the document root to the `public` folder, _**or…**_
 
     - Fire up [PHP’s built-in web server], _**or**…_  
-    <sup>(Doesn’t support .htaccess, you have to include assets without cache busting)</sup>
+    <sup>(Doesn’t support .htaccess, you have to [include assets](https://github.com/mzdr/micro/blob/develop/boilerplates/blank/views/_layouts/default.php#L8) _without_ <strike>$this->asset(…)</strike> cache busting)</sup>
 
     - Just browse to the `public` folder via your local webserver.  
     <sup>(You probably need to adjust `paths.public` in your `configs/dev.yaml`)</sup>
