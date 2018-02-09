@@ -86,7 +86,7 @@ list($statusCode) = router()->dispatch();
  */
 function handle404(array $data = [])
 {
-    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+    http_response_code(404);
 
     echo template()->render('404', $data);
 }
