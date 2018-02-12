@@ -3,23 +3,23 @@
         <img src="https://mzdr.github.io/assets/images/icons/micro.svg" width="256" alt="micro">
     </a><br><br>
 </p>
-<p align="center">A tiny multi-tool for your next big <a href="http://php.net/"><em>PHP</em></a> adventure.</p><br>
+<p align="center">A <em>tiny</em> multi-tool for your next big <a href="http://php.net/">PHP</a> adventure.<sup><a name="a1" href="#f1">1</a></sup></p><br>
 
 ## Features
 
-- Manage (multiple) **configurations** with [Gestalt].
+- Easily manage your application’s **configuration** with [Gestalt].
 
     > Supports PHP, YAML, INI and JSON files out of the box.
 
-- Handle **databases** with [Medoo].
+- Handle various **databases** with [Medoo].
 
-    > Medoo supports several SQL databases<sup><a name="a1" href="#f1">1</a></sup>, lots of common and complex SQL queries, data mapping and prevention of SQL injection.
+    > Medoo supports several SQL databases<sup><a name="a2" href="#f2">2</a></sup>, lots of common and complex SQL queries, data mapping and prevention of SQL injection.
 
-- Custom **error handling and formatting** with [BooBoo].
+- Have **error handling and formatting** to your preference with [BooBoo].
 
     > BooBoo is an error handler for PHP that allows for the execution of handlers and formatters for viewing and managing errors in development and production. It won’t end up in your stack trace, is built for logging, designed for extension and handles errors non-blocking by default.
 
-- Manage **routing** with [FastRoute].
+- Set up lightning fast **routing** with [FastRoute].
 
     > A fast regular expression based request router for PHP. See this [article](http://nikic.github.io/2014/02/18/Fast-request-routing-using-regular-expressions.html) for more details.
 
@@ -47,33 +47,63 @@ composer require mzdr/micro
 
 ## Usage
 
-Basically **µ** is just a bunch of wrapper functions located under a single namespace called `µ`. Every file you see in [`./lib`](./lib) is also available as a function with the same name.
+**micro** is basically just a bunch of _wrapper functions_ located under a _single_ namespace called `µ`. Every file you see in [`./lib`] is also available as a function with the same name.
 
-For example:
+Let me talk in code to you… 😎
 
 ```php
 <?php
 
-// Returns the instance of the config wrapper,
-// which would be an object of the Gestalt (@samrap/gestalt) library.
+// Returns the instance of the Gestalt (@samrap/gestalt) library.
 µ\config();
 
-// Would give you access to the FastRoute (@nikic/FastRoute) instance.
-µ\router();
+// You can pretty much do anything you like with it.
+$config = µ\config();
+$special_var = $config->get('my.stored.variable');
 
-// You’ve guessed right!
-// That would hand over the instance of the Plates
-// (@thephpleague/plates) template engine.
-µ\template();
 
-// Have a look at the ./lib folder to get an overview…
+// Need to register routes with the
+// FastRoute (@nikic/FastRoute) instance?
+µ\router()->get('/home', function() {
+
+    // 🌈 Use your imagination…
+
+    // How about we use the Plates
+    // (@thephpleague/plates) template engine? 🤩
+    echo µ\template()->render('home');
+});
+
+
+// Tired of typing µ? 😫 Join the club!
+namespace µ {
+    router()->get('/user/{id}', '\App\User::profile');
+}
+
+// Out there in strange places? 👽 Import it!
+namespace alien {
+    use function µ\config;
+
+    $done = config()->get('get.it.done');
+}
 ```
+
+<br>
+
+Just follow the official documentation of each library listed below or jump into the [`./lib`] folder to get a look under the hood.
+
+| Function           | Documentation                            |
+| ------------------ | ---------------------------------------- |
+| `µ\config()`       | https://github.com/samrap/gestalt-docs   |
+| `µ\database()`     | https://medoo.in/doc                     |
+| `µ\error()`        | http://booboo.thephpleague.com/          |
+| `µ\router()`       | https://github.com/nikic/FastRoute       |
+| `µ\template()`     | http://platesphp.com/                    |
 
 <br>
 
 ## Bootstrapping
 
-You’re in a hurry? Bootstrap a blank **µ** project!
+You’re in a hurry? Bootstrap a [blank], ready-to-view **µ** project!
 
 1. Make new project directory and jump into it.
 
@@ -87,7 +117,7 @@ You’re in a hurry? Bootstrap a blank **µ** project!
     composer require mzdr/micro
     ```
 
-3. Boostrap blank **µ** project.
+3. Boostrap it.
 
     ```bash
     ./vendor/mzdr/micro/bootstrap
@@ -103,6 +133,7 @@ You’re in a hurry? Bootstrap a blank **µ** project!
     - Just browse to the `public` folder via your local webserver.  
     <sup>(You probably need to adjust `paths.public` in your `configs/dev.yaml`)</sup>
 
+
 <br>
 
 ## License
@@ -114,7 +145,8 @@ This project is licensed under [MIT license].
 <br>
 
 <sup>
-    <a href="#a1" name="f1"><sup>1</sup></a> MySQL, MSSQL, SQLite, MariaDB, PostgreSQL, Sybase, Oracle and many more. <a href="https://github.com/catfan/Medoo#features">catfan/Medoo#features</a>
+    <a href="#a1" name="f1"><sup>1</sup></a> It may be tiny and powerful, but it’s <em>not</em> the right tool for <em>every</em> job.<br>
+    <a href="#a2" name="f2"><sup>2</sup></a> MySQL, MSSQL, SQLite, MariaDB, PostgreSQL, Sybase, Oracle and many more. <a href="https://github.com/catfan/Medoo#features">catfan/Medoo#features</a>
 </sup>
 
 [Gestalt]: https://github.com/samrap/gestalt
@@ -127,3 +159,5 @@ This project is licensed under [MIT license].
 [Composer]: https://getcomposer.org/doc/00-intro.md
 [URL Rewriting]: https://github.com/mzdr/micro/wiki/URL-Rewriting
 [MIT license]: ./LICENSE
+[`./lib`]: ./lib
+[blank]: ./boilerplates/blank
