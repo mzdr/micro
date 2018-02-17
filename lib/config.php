@@ -77,6 +77,37 @@ function config()
 
                 return $this;
             }
+
+            /**
+             * Get a configuration item.
+             *
+             * @param string $key Key to look for.
+             * @param mixed $default Default data to return if key wasn’t found.
+             * @param bool $noCast Do not cast arrays to objects. Default: false
+             * @return mixed
+             */
+            public function get($key, $default = null, $noCast = false)
+            {
+                $result = parent::get($key, $default);
+
+                if ($noCast === true || is_array($result) === false) {
+                    return $result;
+                }
+
+                $objectify = function ($array) use (&$objectify) {
+                    $result = (object) $array;
+
+                    foreach ($result as &$item) {
+                        if (is_array($item)) {
+                            $item = $objectify($item);
+                        }
+                    }
+
+                    return $result;
+                };
+
+                return $objectify($result);
+            }
         };
     }
 
