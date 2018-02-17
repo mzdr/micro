@@ -41,7 +41,7 @@ function config()
                         return require $file;
                     },
                     'yaml' => function ($file) {
-                        return Yaml::parseFile($file);
+                        return Yaml::parseFile($file, Yaml::PARSE_CONSTANT);
                     }
                 ];
 
