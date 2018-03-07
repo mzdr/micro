@@ -49,7 +49,7 @@ require __DIR__ . '/../vendor/autoload.php';
 /**
  * Load a configuration file. Currently supported file types are .php, .ini, .json and .yaml.
  */
-config()->append(__DIR__ . '/../configs/dev.yaml');
+config()->append(__DIR__ . '/../configs/master.yaml');
 
 
 /**
