@@ -15,22 +15,24 @@ function template(): Engine
 {
     static $plates;
 
-    if ($plates instanceof Engine === false) {
-        $defaultDirectory = join(DIRECTORY_SEPARATOR, [getcwd(), 'views']);
-        $assetsPath = config()->get('paths.assets');
+    if ($plates instanceof Engine === true) {
+        return $plates;
+    }
 
-        if (is_readable($defaultDirectory)) {
-            $plates = new Engine($defaultDirectory);
-        } else {
-            $plates = new Engine(config()->get('paths.views'));
-        }
+    $defaultDirectory = join(DIRECTORY_SEPARATOR, [getcwd(), 'views']);
+    $assetsPath = config()->get('paths.assets');
 
-        if ($assetsPath) {
-            $plates->loadExtension(
-                new Asset($assetsPath, true)
-            );
-        }
+    if (is_readable($defaultDirectory)) {
+        $plates = new Engine($defaultDirectory);
+    } else {
+        $plates = new Engine(config()->get('paths.views'));
+    }
+
+    if ($assetsPath) {
+        $plates->loadExtension(
+            new Asset($assetsPath, true)
+        );
     }
 
     return $plates;
-};
+}

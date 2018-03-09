@@ -10,28 +10,29 @@ use Medoo\Medoo;
  *
  * @return Medoo
  * @see https://github.com/catfan/Medoo
+ * @throws InvalidArgumentException If called without database configuration.
  */
 function db(): Medoo
 {
     static $db;
 
-    if ($db instanceof Medoo === false) {
-        $config = config()->get('db', null, true);
-
-        if ($config === null) {
-            throw new InvalidArgumentException(
-                "No database configuration has been found. Use µ\config()->set('db', '…') to provide configuration. See Medoo documentation for additional details."
-            );
-        }
-
-        $db = new Medoo($config);
+    if ($db instanceof Medoo === true) {
+        return $db;
     }
 
-    return $db;
+    $config = config()->get('db', null, true);
+
+    if ($config === null) {
+        throw new InvalidArgumentException(
+            "No database configuration has been found. Use µ\config()->set('db', '…') to provide configuration. See Medoo documentation for additional details."
+        );
+    }
+
+    return $db = new Medoo($config);
 }
 
 /**
- * @see \µ\db()
+ * @see db()
  */
 function database(): Medoo
 {

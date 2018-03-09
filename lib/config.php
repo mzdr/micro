@@ -17,99 +17,99 @@ function config()
 {
     static $config;
 
-    if ($config instanceof Configuration === false) {
-        $config = new class extends Configuration {
+    if ($config instanceof Configuration === true) {
+        return $config;
+    }
 
-            /**
-             * Appends a single configuration file or all files
-             * from a given directory into the current configuration.
-             *
-             * @param string|SplFileInfo $path Path of configuration file or directory.
-             * @param string $preferredExtension Preferred files to use when scanning directory. Defaults to `php`.
-             * @return Configuration
-             */
-            public function append($path, string $preferredExtension = 'php'): Configuration
-            {
-                $loaders = [
-                    'ini' => function ($file) {
-                        return parse_ini_file($file, true);
-                    },
-                    'json' => function ($file) {
-                        return json_decode(file_get_contents($file));
-                    },
-                    'php' => function ($file) {
-                        return require $file;
-                    },
-                    'yaml' => function ($file) {
-                        return Yaml::parseFile($file, Yaml::PARSE_CONSTANT);
-                    }
-                ];
+    return $config = new class extends Configuration {
 
-                $resource = $path instanceof SplFileInfo ? $path : new SplFileInfo($path);
-                $extension = $resource->getExtension();
+        /**
+         * Appends a single configuration file or all files
+         * from a given directory into the current configuration.
+         *
+         * @param string|SplFileInfo $path Path of configuration file or directory.
+         * @param string $preferredExtension Preferred files to use when scanning directory. Defaults to `php`.
+         * @return Configuration
+         */
+        public function append($path, string $preferredExtension = 'php'): Configuration
+        {
+            $loaders = [
+                'ini' => function ($file) {
+                    return parse_ini_file($file, true);
+                },
+                'json' => function ($file) {
+                    return json_decode(file_get_contents($file));
+                },
+                'php' => function ($file) {
+                    return require $file;
+                },
+                'yaml' => function ($file) {
+                    return Yaml::parseFile($file, Yaml::PARSE_CONSTANT);
+                }
+            ];
 
-                if ($resource->isFile() && isset($loaders[$extension])) {
-                    $loader = $loaders[$extension];
-                    $append = new static;
+            $resource = $path instanceof SplFileInfo ? $path : new SplFileInfo($path);
+            $extension = $resource->getExtension();
 
-                    foreach ($loader($resource->getPathname()) as $key => $value) {
-                        $append->set($key, $value);
-                    }
+            if ($resource->isFile() && isset($loaders[$extension])) {
+                $loader = $loaders[$extension];
+                $append = new static;
 
-                    $append = $append->all();
-                    $this->original = array_merge($this->original, $append);
-                    $this->items = array_merge($this->items, $append);
-
-                    $this->notify();
-
-                    return $this;
+                foreach ($loader($resource->getPathname()) as $key => $value) {
+                    $append->set($key, $value);
                 }
 
-                if ($resource->isDir()) {
-                    $directory = new DirectoryIterator(realpath($path));
+                $append = $append->all();
+                $this->original = array_merge($this->original, $append);
+                $this->items = array_merge($this->items, $append);
 
-                    foreach ($directory as $file) {
-                        if ($file->isFile() && $file->getExtension() === $preferredExtension) {
-                            $this->append($file);
-                        }
-                    }
-                }
+                $this->notify();
 
                 return $this;
             }
 
-            /**
-             * Get a configuration item.
-             *
-             * @param string $key Key to look for.
-             * @param mixed $default Default data to return if key wasn’t found.
-             * @param bool $noCast Do not cast arrays to objects. Default: false
-             * @return mixed
-             */
-            public function get($key, $default = null, $noCast = false)
-            {
-                $result = parent::get($key, $default);
+            if ($resource->isDir()) {
+                $directory = new DirectoryIterator(realpath($path));
 
-                if ($noCast === true || is_array($result) === false) {
-                    return $result;
+                foreach ($directory as $file) {
+                    if ($file->isFile() && $file->getExtension() === $preferredExtension) {
+                        $this->append($file);
+                    }
+                }
+            }
+
+            return $this;
+        }
+
+        /**
+         * Get a configuration item.
+         *
+         * @param string $key Key to look for.
+         * @param mixed $default Default data to return if key wasn’t found.
+         * @param bool $noCast Do not cast arrays to objects. Default: false
+         * @return mixed
+         */
+        public function get($key, $default = null, $noCast = false)
+        {
+            $result = parent::get($key, $default);
+
+            if ($noCast === true || is_array($result) === false) {
+                return $result;
+            }
+
+            $objectify = function ($array) use (&$objectify) {
+                $result = (object) $array;
+
+                foreach ($result as &$item) {
+                    if (is_array($item)) {
+                        $item = $objectify($item);
+                    }
                 }
 
-                $objectify = function ($array) use (&$objectify) {
-                    $result = (object) $array;
+                return $result;
+            };
 
-                    foreach ($result as &$item) {
-                        if (is_array($item)) {
-                            $item = $objectify($item);
-                        }
-                    }
-
-                    return $result;
-                };
-
-                return $objectify($result);
-            }
-        };
-    }
-
-    return $config;
+            return $objectify($result);
+        }
+    };
 }

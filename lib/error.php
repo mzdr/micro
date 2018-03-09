@@ -16,11 +16,12 @@ function error(): BooBoo
 {
     static $eh;
 
-    if ($eh instanceof BooBoo === false) {
-        $eh = new BooBoo([new HtmlTableFormatter]);
-
-        $eh->register();
+    if ($eh instanceof BooBoo === true) {
+        return $eh;
     }
+
+    $eh = new BooBoo([new HtmlTableFormatter]);
+    $eh->register();
 
     return $eh;
 }
