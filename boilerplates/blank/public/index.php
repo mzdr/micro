@@ -56,7 +56,7 @@ config()->append(__DIR__ . '/../configs/master.yaml');
  * Add global data/functions that should be available in all templates.
  */
 template()->addData([
-    'paths' => config()->get('paths'),
+    'paths' => config()->get('µ.paths'),
     'pageload' => function () use ($start) {
         return number_format((microtime(true) - $start) * 1000, 2) . 'ms';
     }

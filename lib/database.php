@@ -20,11 +20,11 @@ function db(): Medoo
         return $db;
     }
 
-    $config = config()->get('db', null, true);
+    $config = config()->get('µ.db', null, true);
 
     if ($config === null) {
         throw new InvalidArgumentException(
-            "No database configuration has been found. Use µ\config()->set('db', '…') to provide configuration. See Medoo documentation for additional details."
+            "No database configuration has been found. Use µ\config()->set('µ.db', '…') to provide configuration. See Medoo documentation for additional details."
         );
     }
 

@@ -60,7 +60,7 @@ function router(): RouteCollector
             $httpMethod = $httpMethod ?? $_SERVER['REQUEST_METHOD'];
             $uri = rawurldecode(strtok($uri ?? $_SERVER['REQUEST_URI'], '?'));
             $data = $this->getData();
-            $useCache = config()->get('router.cache', false);
+            $useCache = config()->get('µ.router.cache', false);
 
             if ($useCache === false) {
                 return $this->handle(
@@ -68,7 +68,7 @@ function router(): RouteCollector
                 );
             }
 
-            $cacheFile = config()->get('router.cacheFile');
+            $cacheFile = config()->get('µ.router.cacheFile');
 
             if (isset($cacheFile) === false) {
                 throw new LogicException('Must specify “router.cacheFile” option when caching is enabled.');

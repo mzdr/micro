@@ -20,12 +20,12 @@ function template(): Engine
     }
 
     $defaultDirectory = join(DIRECTORY_SEPARATOR, [getcwd(), 'views']);
-    $assetsPath = config()->get('paths.assets');
+    $assetsPath = config()->get('µ.paths.assets');
 
     if (is_readable($defaultDirectory)) {
         $plates = new Engine($defaultDirectory);
     } else {
-        $plates = new Engine(config()->get('paths.views'));
+        $plates = new Engine(config()->get('µ.paths.views'));
     }
 
     if ($assetsPath) {

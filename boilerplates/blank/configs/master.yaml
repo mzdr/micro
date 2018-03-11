@@ -1,128 +1,64 @@
-# Templating related settings for Plates.
-paths:
+# All settings that are used internally by micro
+# go under the µ key.
+µ:
+  # Settings (mostly) used by Plates.
+  paths:
 
-  # Physical path to your assets. Use this if you want
-  # to use the asset extension for cache busting files.
+    # Physical path to your assets. Use this if you want
+    # to use the asset extension for cache busting files.
+    #
+    # @see http://platesphp.com/v3/extensions/asset/
+    assets: ./
+
+    # Not used by Plates, but useful for handling different environments.
+    public: ''
+
+    # Path to templates.
+    views: ../views
+
+
+  # Database settings for Medoo.
   #
-  # See http://platesphp.com/v3/extensions/asset/
-  assets: ./
+  # @see https://medoo.in/doc
+  # db:
+    # database_type: sqlite
+    # database_file: ../store/database.db
 
-  # Not used by Plates, but useful for handling different environments.
-  public: ''
+    # database_type: mysql
+    # database_name: name
+    # server: localhost
+    # username: your_username
+    # password: your_password
 
-  # Path to templates
-  views: ../views
+    # charset: utf8
+    # port: 3306
+    # prefix: myprefix_
 
+    # Enable logging (Logging is disabled by default for better performance)
+    # logging: true
 
-# Database related settings for Medoo.
-# db:
-  # database_type: sqlite
-  # database_file: ../store/database.db
+    # MySQL socket (shouldn't be used with server and port)
+    # socket: /tmp/mysql.sock
 
-  # database_type: mysql
-  # database_name: name
-  # server: localhost
-  # username: your_username
-  # password: your_password
+    # Driver options for the connection.
+    #
+    # @see http://www.php.net/manual/en/pdo.setattribute.php
+    # option:
+    #   !php/const PDO::ATTR_ERRMODE: !php/const PDO::ERRMODE_EXCEPTION
 
-  # charset: utf8
-  # port: 3306
-
-  # Table prefix
-  # prefix: prefix_
-
-  # Enable logging (Logging is disabled by default for better performance)
-  # logging: true
-
-  # MySQL socket (shouldn't be used with server and port)
-  # socket: /tmp/mysql.sock
-
-  # driver_option for connection, read more from http://www.php.net/manual/en/pdo.setattribute.php
-  # option:
-  #   !php/const PDO::ATTR_ERRMODE: !php/const PDO::ERRMODE_EXCEPTION
-
-  # Medoo will execute those commands after connected to the database for initialization
-  # command:
-  #   - SET SQL_MODE=ANSI_QUOTES
+    # Medoo will execute those commands after connecting to the database for initialization.
+    # command:
+    #   - SET SQL_MODE=ANSI_QUOTES
 
 
-# Routing related settings for FastRoute.
-# router:
-  # cache: true
-  # cacheFile: ../cache/router.cache
+  # Settings for FastRoute.
+  # router:
+    # cache: true
+    # cacheFile: ../cache/router.cache
 
 
-# Error handling related settings for BooBoo.
-# error:
-  # formatter: json
+  # Settings for BooBoo.
+  # error:
+    # formatter: json
 
 
-# Caching related settings for phpFastCache.
-#
-# See https://github.com/PHPSocialNetwork/phpfastcache/blob/final/docs/OPTIONS.md
-# cache:
-
-  # See https://github.com/PHPSocialNetwork/phpfastcache/blob/final/docs/DRIVERS.md
-  # driver: files
-
-  # Specify if the item must provide detailed creation/modification dates
-  # itemDetailedDate: false
-
-  # Automatically attempt to fallback to temporary directory
-  # if the cache fails to write on the specified directory
-  # autoTmpFallback: false
-
-  # Provide a secure file manipulation mechanism,
-  # on intensive usage the performance can be affected.
-  # secureFileManipulation: false
-
-  # Ignore Symfony notice for Symfony project which
-  # do not makes use of PhpFastCache's Symfony Bundle
-  # ignoreSymfonyNotice: false
-
-  # Default time-to-live in second
-  # defaultTtl: 900
-
-  # Default key hash function.
-  # (md5 by default)
-  # defaultKeyHashFunction: ''
-
-  # The securityKey that will be used
-  # to create sub-directory
-  # (Files-based drivers only)
-  # securityKey: 'Auto'
-
-  # Auto-generate .htaccess if it's missing
-  # (Files-based drivers only)
-  # htaccess: true
-
-  # Default files chmod.
-  # 0777 recommended
-  # (Files-based drivers only)
-  # default_chmod: 0777
-
-  # The absolute path where the written cache files belong to
-  # (system temp directory by default).
-  # (Files-based drivers only)
-  # path: /absolute/path/to/cache
-
-  # Driver fallback in case of failure.
-  # Caution, in case of failure an E_WARNING error will always be raised.
-  # fallback: false
-
-  # Maximum size (bytes) of object store in memory.
-  # (Memcache(d) drivers only)
-  # limited_memory_each_object: 4096
-
-  # Compress stored data, if the backend supports it.
-  # (Memcache(d) drivers only)
-  # compress_data: false
-
-  # Prevent cache slams when making use of heavy cache items.
-  # preventCacheSlams: false
-
-  # Cache slams timeout in seconds.
-  # cacheSlamsTimeout: 15
-
-  # Cache file extension.
-  # cacheFileExtension: cache
