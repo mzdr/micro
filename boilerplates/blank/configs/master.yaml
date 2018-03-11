@@ -62,3 +62,55 @@
     # formatter: json
 
 
+  # Settings for Scrapbook.
+  #
+  # @see https://www.scrapbook.cash/
+  # cache:
+
+    # Return PSR-16 compliant cache.
+    #
+    # @see https://www.php-fig.org/psr/psr-16/
+    # psr16: true
+
+    # Return PSR-6 compliant cache.
+    #
+    # @see https://www.php-fig.org/psr/psr-6/
+    # psr6: true
+
+    # @see https://github.com/matthiasmullie/scrapbook#local-buffer
+    # localBuffer: true
+
+    # @see https://github.com/matthiasmullie/scrapbook#stampede-protection
+    # stampedeProtection: true
+
+    # @see https://github.com/matthiasmullie/scrapbook#transactions
+    # transactions: true
+
+    # @see https://github.com/matthiasmullie/scrapbook#adapters
+    # adapter: files
+
+    # Common settings for database based adapters.
+    # name: cache
+    # host: 127.0.0.1
+    # port: 11211
+    # user:
+    # password:
+
+    # If adapter is files/flysystem/sqlite this path
+    # will be used to write cache files to.
+    #
+    # Default: sys_get_temp_dir()
+    # path: ../cache
+
+    # If sharding is used, global cache configuration is
+    # ignored except for those keys: localBuffer,
+    # stampedeProtection, transactions, psr6, psr16.
+    #
+    # Provide those settings individually for each sharding entry.
+    #
+    # @see https://github.com/matthiasmullie/scrapbook#sharding
+    # sharding:
+    #   - adapter: files
+    #     path: ../cache/1
+    #   - adapter: files
+    #     path: ../cache/2

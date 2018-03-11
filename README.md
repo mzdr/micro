@@ -27,6 +27,10 @@
 
     > Plates is designed for developers who prefer to use native PHP templates over compiled template languages, such as Twig or Blade. It supports layouts, inheritance, namespaces, data sharing and comes with built-in escaping helpers.
 
+- ⚡️ Speed up your (dynamic) web applications by **caching** with [Scrapbook].
+
+    > PHP cache library, with adapters for e.g. Memcached, Redis, Couchbase, APC(u), SQL and additional capabilities (e.g. transactions, stampede protection) built on top.
+
 <br>
 
 ## Requirements
@@ -64,7 +68,7 @@ $special_var = $config->get('my.stored.variable');
 
 // Need to register routes with the
 // FastRoute (@nikic/FastRoute) instance?
-µ\router()->get('/home', function() {
+µ\router()->get('/home', function () {
 
     // 🌈 Use your imagination…
 
@@ -76,7 +80,21 @@ $special_var = $config->get('my.stored.variable');
 
 // Tired of typing µ? 😫 Join the club!
 namespace µ {
-    router()->get('/user/{id}', '\App\User::profile');
+    router()->get('/', function () {
+        $key = 'my-heavy-op';
+        $ttl = 300;
+        $value = "cached for $ttl seconds.";
+
+        if (cache()->has($key) === false) {
+            sleep(2); // So so heavy…
+
+            cache()->set($key, $value, $ttl);
+
+            return $value;
+        }
+
+        return cache()->get($key);
+    });
 }
 
 // Out there in strange places? 👽 Import it!
@@ -91,13 +109,14 @@ namespace alien {
 
 Just follow the official documentation of each library listed below or jump into the [`./lib`] folder to get a look under the hood.
 
-| Function           | Documentation                            |
-| ------------------ | ---------------------------------------- |
+| Function           | Documentation                            | 
+| ------------------ | ---------------------------------------- | 
 | `µ\config()`       | https://github.com/samrap/gestalt-docs   |
 | `µ\database()`     | https://medoo.in/doc                     |
 | `µ\error()`        | http://booboo.thephpleague.com/          |
 | `µ\router()`       | https://github.com/nikic/FastRoute       |
 | `µ\template()`     | http://platesphp.com/                    |
+| `µ\cache()`        | https://www.scrapbook.cash/              |
 
 <br>
 
@@ -154,6 +173,7 @@ This project is licensed under [MIT license].
 [BooBoo]: https://github.com/thephpleague/booboo
 [FastRoute]: https://github.com/nikic/FastRoute
 [Plates]: https://github.com/thephpleague/plates
+[Scrapbook]: https://github.com/matthiasmullie/scrapbook#keyvaluestore
 [PHP]: http://php.net
 [PHP’s built-in web server]: https://secure.php.net/manual/en/features.commandline.webserver.php
 [Composer]: https://getcomposer.org/doc/00-intro.md

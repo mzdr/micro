@@ -16,7 +16,9 @@
         "symfony/yaml": "^4.0",
         "league/booboo": "^2.0",
         "catfan/Medoo": "^1.5",
-        "nikic/fast-route": "^1.2"
+        "nikic/fast-route": "^1.2",
+        "matthiasmullie/scrapbook": "^1.4",
+        "league/flysystem": "^1.0"
     },
     "platform": {
         "php": "^7.0"
