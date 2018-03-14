@@ -1,7 +1,7 @@
 {
     "name": "mzdr/micro",
     "description": "A tiny multi-tool for your next big PHP adventure.",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "homepage": "https://mzdr.github.io/micro/",
     "license": "MIT",
     "authors": [
@@ -18,10 +18,8 @@
         "catfan/Medoo": "^1.5",
         "nikic/fast-route": "^1.2",
         "matthiasmullie/scrapbook": "^1.4",
-        "league/flysystem": "^1.0"
-    },
-    "platform": {
-        "php": "^7.0"
+        "league/flysystem": "^1.0",
+        "php": "^7.1.3"
     },
     "autoload": {
         "files": ["micro.php"]

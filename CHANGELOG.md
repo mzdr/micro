@@ -1,3 +1,9 @@
+# [2.0.1]
+###### 2018-03-14
+
+Fix composer not requiring correct PHP version.
+
+
 # [2.0.0]
 ###### 2018-03-11
 
@@ -19,7 +25,7 @@ Changing the error formatter in your configuration (e.g. `config()->set('µ.erro
 
 You gotta start somewhere, right? 🌟
 
-
+[2.0.1]: https://github.com/mzdr/micro/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/mzdr/micro/compare/1.0.1...2.0.0
 [1.0.1]: https://github.com/mzdr/micro/compare/1.0.0...1.0.1
 

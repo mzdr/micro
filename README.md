@@ -35,7 +35,7 @@
 
 ## Requirements
 
-[PHP] 7+ and preferably [URL Rewriting] enabled.
+[PHP] 7.1.3+ and preferably [URL Rewriting] enabled.
 
 <br>
 

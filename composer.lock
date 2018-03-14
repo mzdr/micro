@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "371fcb6aa2121c1d576fc4a60da5398a",
+    "content-hash": "72d98a66fa8b22ad0d74e67c4c0b7d97",
     "packages": [
         {
             "name": "catfan/medoo",
-            "version": "v1.5.4",
+            "version": "v1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "a6b7b05b18fa7c8f955e259d491344b1db9a51bf"
+                "reference": "4e51f7483b01ed1195565bb64e85ea8bd17b63cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/catfan/Medoo/zipball/a6b7b05b18fa7c8f955e259d491344b1db9a51bf",
-                "reference": "a6b7b05b18fa7c8f955e259d491344b1db9a51bf",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/4e51f7483b01ed1195565bb64e85ea8bd17b63cb",
+                "reference": "4e51f7483b01ed1195565bb64e85ea8bd17b63cb",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 "sql",
                 "sqlite"
             ],
-            "time": "2018-01-08T20:01:12+00:00"
+            "time": "2018-03-07T09:42:23+00:00"
         },
         {
             "name": "league/booboo",
@@ -571,16 +571,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.0.4",
+            "version": "v4.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "ffc60bda1d4a00ec0b32eeabf39dc017bf480028"
+                "reference": "de5f125ea39de846b90b313b2cfb031a0152d223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/ffc60bda1d4a00ec0b32eeabf39dc017bf480028",
-                "reference": "ffc60bda1d4a00ec0b32eeabf39dc017bf480028",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/de5f125ea39de846b90b313b2cfb031a0152d223",
+                "reference": "de5f125ea39de846b90b313b2cfb031a0152d223",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +625,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-21T19:06:11+00:00"
+            "time": "2018-02-19T20:08:53+00:00"
         }
     ],
     "packages-dev": [],
@@ -634,6 +634,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.1.3"
+    },
     "platform-dev": []
 }
