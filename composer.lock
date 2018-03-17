@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "72d98a66fa8b22ad0d74e67c4c0b7d97",
+    "content-hash": "bdb7b1462fc777a562fd4d2043182da6",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -64,6 +64,52 @@
                 "sqlite"
             ],
             "time": "2018-03-07T09:42:23+00:00"
+        },
+        {
+            "name": "jasny/php-functions",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jasny/php-functions.git",
+                "reference": "ee00d879a0de354469f544a40b7cfecbdd5e2344"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jasny/php-functions/zipball/ee00d879a0de354469f544a40b7cfecbdd5e2344",
+                "reference": "ee00d879a0de354469f544a40b7cfecbdd5e2344",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "jasny/php-code-quality": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/array_functions.php",
+                    "src/case_functions.php",
+                    "src/string_functions.php",
+                    "src/server_functions.php",
+                    "src/type_functions.php",
+                    "src/file_functions.php",
+                    "src/func_functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arnold Daniels",
+                    "email": "arnold@jasny.net",
+                    "homepage": "http://www.jasny.net"
+                }
+            ],
+            "description": "A set of useful PHP functions",
+            "time": "2017-07-03T20:12:46+00:00"
         },
         {
             "name": "league/booboo",

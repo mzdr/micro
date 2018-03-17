@@ -1,3 +1,9 @@
+# [2.0.2]
+###### 2018-03-17
+
+Replace [`$objectify()`] function with the one from [Jasny’s PHP functions].
+
+
 # [2.0.1]
 ###### 2018-03-14
 
@@ -25,11 +31,15 @@ Changing the error formatter in your configuration (e.g. `config()->set('µ.erro
 
 You gotta start somewhere, right? 🌟
 
+[2.0.2]: https://github.com/mzdr/micro/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/mzdr/micro/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/mzdr/micro/compare/1.0.1...2.0.0
 [1.0.1]: https://github.com/mzdr/micro/compare/1.0.0...1.0.1
 
+[Jasny’s PHP functions]: https://github.com/jasny/php-functions
 [Scrapbook]: https://github.com/matthiasmullie/scrapbook
 
 [8b9c210]: https://github.com/mzdr/micro/commit/8b9c210
 [33505bf]: https://github.com/mzdr/micro/commit/33505bf
+
+[`$objectify()`]: https://github.com/mzdr/micro/blob/ac77047844a6fa306b742910e71834503710ac29/lib/config.php#L100

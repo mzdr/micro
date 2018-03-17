@@ -4,6 +4,7 @@ namespace µ;
 
 use DirectoryIterator;
 use Gestalt\Configuration;
+use Jasny;
 use SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 
@@ -93,23 +94,11 @@ function config()
         {
             $result = parent::get($key, $default);
 
-            if ($noCast === true || is_array($result) === false) {
+            if ($noCast === true) {
                 return $result;
             }
 
-            $objectify = function ($array) use (&$objectify) {
-                $result = (object) $array;
-
-                foreach ($result as &$item) {
-                    if (is_array($item)) {
-                        $item = $objectify($item);
-                    }
-                }
-
-                return $result;
-            };
-
-            return $objectify($result);
+            return Jasny\objectify($result);
         }
     };
 }
