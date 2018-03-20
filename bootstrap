@@ -67,7 +67,7 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
     $go = readline();
 }
 
-if ($go && strtolower($go) !== 'Y') {
+if ($go && strtolower($go) !== 'y') {
     printf("
     Okay, cool. 👋
 ");
