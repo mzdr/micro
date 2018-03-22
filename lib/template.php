@@ -4,6 +4,7 @@ namespace µ;
 
 use League\Plates\Engine;
 use League\Plates\Extension\Asset;
+use Webmozart\PathUtil\Path;
 
 /**
  * Provides access to the Plates template engine.
@@ -19,18 +20,24 @@ function template(): Engine
         return $plates;
     }
 
-    $defaultDirectory = join(DIRECTORY_SEPARATOR, [getcwd(), 'views']);
-    $assetsPath = config()->get('µ.paths.assets');
+    // By default we use the current working directory
+    $cwd = getcwd();
 
-    if (is_readable($defaultDirectory)) {
-        $plates = new Engine($defaultDirectory);
-    } else {
-        $plates = new Engine(config()->get('µ.paths.views'));
-    }
+    // See if any paths are provided by the configuration
+    $paths = config()->get('µ.paths');
 
-    if ($assetsPath) {
+    // Set default path for views directory…
+    $defaultViewsPath = Path::canonicalize((is_string($cwd) ? $cwd : '') . '/../views');
+
+    // Create Plates instance and prefer the configured views path,
+    // otherwise take the default path as fallback
+    $plates = new Engine($paths->views ?? $defaultViewsPath);
+
+    // If an assets path is given, also load the asset extension
+    // @see http://platesphp.com/v3/extensions/asset/
+    if (isset($paths->assets)) {
         $plates->loadExtension(
-            new Asset($assetsPath, true)
+            new Asset($paths->assets, true)
         );
     }
 
