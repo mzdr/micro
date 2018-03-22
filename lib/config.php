@@ -60,8 +60,14 @@ function config()
             if ($resource->isFile() && isset($loaders[$extension])) {
                 $loader = $loaders[$extension];
                 $append = new static;
+                $raw = $loader($resource->getPathname());
 
-                foreach ($loader($resource->getPathname()) as $key => $value) {
+                // Configuration file did not provide any meaningful data…
+                if (is_object($raw) === false && is_array($raw) === false) {
+                    return $this;
+                }
+
+                foreach ($raw as $key => $value) {
                     $append->set($key, $value);
                 }
 
