@@ -5,6 +5,7 @@ namespace µ;
 use DirectoryIterator;
 use Gestalt\Configuration;
 use Jasny;
+use RuntimeException;
 use SplFileInfo;
 use Symfony\Component\Yaml\Yaml;
 
@@ -51,6 +52,10 @@ function config()
 
             $resource = $path instanceof SplFileInfo ? $path : new SplFileInfo($path);
             $extension = $resource->getExtension();
+
+            if ($resource->isReadable() === false) {
+                throw new RuntimeException("Unable to read “{$resource->getPathname()}”.");
+            }
 
             if ($resource->isFile() && isset($loaders[$extension])) {
                 $loader = $loaders[$extension];
