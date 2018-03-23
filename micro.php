@@ -1,5 +1,9 @@
 <?php
 
+namespace µ;
+
+const VERSION = '2.1.0';
+
 require_once __DIR__ . '/lib/cache.php';
 require_once __DIR__ . '/lib/config.php';
 require_once __DIR__ . '/lib/database.php';
