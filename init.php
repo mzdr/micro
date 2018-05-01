@@ -12,24 +12,25 @@ config()->attach(
             'html_table' => '\League\BooBoo\Formatter\HtmlTableFormatter',
             'json'       => '\League\BooBoo\Formatter\JsonFormatter',
             'cmd'        => '\League\BooBoo\Formatter\CommandLineFormatter',
-            'null'       => '\League\BooBoo\Formatter\NullFormatter'
+            'null'       => '\League\BooBoo\Formatter\NullFormatter',
+            'ohsnap'     => '\mzdr\OhSnap\Formatter\PrettyFormatter'
         ];
 
         private $currentFormatter = null;
 
         public function update(Observable $config)
         {
-            $formatter = config()->get('µ.error.formatter');
+            $error = config()->get('µ.error');
 
-            if (isset($this->formatters[$formatter]) === false || $formatter === $this->currentFormatter) {
+            if (isset($this->formatters[$error->formatter]) === false || $error->formatter === $this->currentFormatter) {
                 return;
             }
 
-            $this->currentFormatter = $formatter;
+            $this->currentFormatter = $error->formatter;
 
             error()->clearFormatters()
                    ->pushFormatter(
-                       new $this->formatters[$formatter]
+                       new $this->formatters[$error->formatter]($error)
                    );
         }
     }
