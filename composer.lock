@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c508adca85cc65971fe2369fc7e44a63",
+    "content-hash": "824f4d74b581762233e5fa1b90781d31",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -381,6 +381,45 @@
                 "value"
             ],
             "time": "2018-02-14T07:39:26+00:00"
+        },
+        {
+            "name": "mzdr/oh-snap",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mzdr/oh-snap.git",
+                "reference": "b9da897bbf0e95fe85486b70db33e330ca5d750b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mzdr/oh-snap/zipball/b9da897bbf0e95fe85486b70db33e330ca5d750b",
+                "reference": "b9da897bbf0e95fe85486b70db33e330ca5d750b",
+                "shasum": ""
+            },
+            "require": {
+                "jasny/php-functions": "^3.2",
+                "league/booboo": "^2.0",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mzdr\\OhSnap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Prein",
+                    "email": "hi@sebastianprein.com"
+                }
+            ],
+            "description": "A pretty formatter for BooBoo.",
+            "homepage": "https://github.com/mzdr/oh-snap",
+            "time": "2018-05-01T12:24:29+00:00"
         },
         {
             "name": "nikic/fast-route",
