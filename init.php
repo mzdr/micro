@@ -20,14 +20,25 @@ config()->attach(
 
         public function update(Observable $config)
         {
-            $error = config()->get('µ.error');
+            $error = $config->get('µ.error');
+            $formatter = json_encode($error);
 
-            if (isset($this->formatters[$error->formatter]) === false || $error->formatter === $this->currentFormatter) {
+            // Do we have error formatting configuration and
+            // if so, is the formatter supported?
+            if (isset($error->formatter, $this->formatters[$error->formatter]) === false) {
+                return;
+            }
+
+            // Given error settings do not differ from current settings…
+            if ($formatter === $this->currentFormatter) {
                 return;
             }
 
             $this->currentFormatter = $error->formatter;
 
+            // Setting up BooBoo via configuration files is currently rather “basic”.
+            // This means you cannot set up certain formatters for particular types of errors.
+            // If you need advanced possibilities you should configure it customly via error() calls.
             error()->clearFormatters()
                    ->pushFormatter(
                        new $this->formatters[$error->formatter]($error)
