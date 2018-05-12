@@ -25,6 +25,9 @@
         "mzdr/oh-snap": "^1.0"
     },
     "autoload": {
-        "files": ["micro.php"]
+        "files": ["micro.php"],
+        "psr-4": {
+            "µ\\": "micro/classes/"
+        }
     }
 }
