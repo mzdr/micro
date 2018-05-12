@@ -51,7 +51,7 @@ composer require mzdr/micro
 
 ## Usage
 
-**micro** is basically just a bunch of _wrapper functions_ located under a _single_ namespace called `µ`. Every file you see in [`./lib`] is also available as a function with the same name.
+**micro** is basically just a bunch of _wrapper functions_ located under a _single_ namespace called `µ`. Every file you see in [`./micro/functions`] is also available as a function with the same name.
 
 Let me talk in code to you… 😎
 
@@ -107,7 +107,7 @@ namespace alien {
 
 <br>
 
-Just follow the official documentation of each library listed below or jump into the [`./lib`] folder to get a look under the hood.
+Just follow the official documentation of each library listed below or jump into the [`./micro/functions`] folder to get a look under the hood.
 
 | Function           | Documentation                            | 
 | ------------------ | ---------------------------------------- | 
@@ -179,5 +179,5 @@ This project is licensed under [MIT license].
 [Composer]: https://getcomposer.org/doc/00-intro.md
 [URL Rewriting]: https://github.com/mzdr/micro/wiki/URL-Rewriting
 [MIT license]: ./LICENSE
-[`./lib`]: ./lib
+[`./micro/functions`]: ./micro/functions
 [blank]: ./boilerplates/blank
