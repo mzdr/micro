@@ -2,39 +2,44 @@
 
 namespace µ;
 
-use InvalidArgumentException;
-use Medoo\Medoo;
+use RuntimeException;
 
 /**
- * Provides access to the Medoo database package.
+ * Provides access to a simple wrapper class for
+ * Doctrine’s DBAL and ORM.
  *
- * @return Medoo
- * @see https://github.com/catfan/Medoo
- * @throws InvalidArgumentException If called without database configuration.
+ * @return Database
+ * @see https://www.doctrine-project.org/
  */
-function db(): Medoo
+function db(): Database
 {
     static $db;
 
-    if ($db instanceof Medoo === true) {
+    if ($db instanceof Database === true) {
         return $db;
     }
 
-    $config = config()->get('µ.db', null, true);
+    // Retrieve database configuration…
+    $config = config()->get('µ.db');
 
+    // If no configuration was found but this function was called,
+    // throw an RuntimeException and let the user know why things went wrong.
     if ($config === null) {
-        throw new InvalidArgumentException(
-            "No database configuration has been found. Use µ\config()->set('µ.db', '…') to provide configuration. See Medoo documentation for additional details."
+        throw new RuntimeException(
+            "No database configuration has been found. Use µ\config()->set('µ.db', []) to provide configuration. See Doctrine/DBAL documentation for additional details."
         );
     }
 
-    return $db = new Medoo($config);
+    // Use wrapper class to ease access to Doctrine’s DBAL/ORM…
+    return $db = new Database($config, config()->get('µ.env'));
 }
 
 /**
- * @see db()
+ * Just an alias of µ\db().
+ *
+ * @see db
  */
-function database(): Medoo
+function database(): Database
 {
     return db();
 }

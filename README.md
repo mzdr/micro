@@ -11,9 +11,9 @@
 
     > Supports PHP, YAML, INI and JSON files out of the box.
 
-- Handle various **databases** with [Medoo].
+- Handle **databases** with [Doctrine]’s [DBAL] and optionally use their [ORM].
 
-    > Medoo supports several SQL databases<sup><a name="a2" href="#f2">2</a></sup>, lots of common and complex SQL queries, data mapping and prevention of SQL injection.
+    > The Doctrine database abstraction & access layer (DBAL) offers a lightweight and thin runtime layer around a PDO-like API and a lot of additional, horizontal features like database schema introspection and manipulation through an OO API.
 
 - Have **error handling and formatting** to your preference with [BooBoo].
 
@@ -112,7 +112,7 @@ Just follow the official documentation of each library listed below or jump into
 | Function           | Documentation                            | 
 | ------------------ | ---------------------------------------- | 
 | `µ\config()`       | https://github.com/samrap/gestalt-docs   |
-| `µ\database()`     | https://medoo.in/doc                     |
+| `µ\database()`     | https://www.doctrine-project.org/        |
 | `µ\error()`        | http://booboo.thephpleague.com/          |
 | `µ\router()`       | https://github.com/nikic/FastRoute       |
 | `µ\template()`     | http://platesphp.com/                    |
@@ -165,11 +165,12 @@ This project is licensed under [MIT license].
 
 <sup>
     <a href="#a1" name="f1"><sup>1</sup></a> It may be tiny and powerful, but it’s <em>not</em> the right tool for <em>every</em> job.<br>
-    <a href="#a2" name="f2"><sup>2</sup></a> MySQL, MSSQL, SQLite, MariaDB, PostgreSQL, Sybase, Oracle and many more. <a href="https://github.com/catfan/Medoo#features">catfan/Medoo#features</a>
 </sup>
 
 [Gestalt]: https://github.com/samrap/gestalt
-[Medoo]: https://github.com/catfan/Medoo
+[Doctrine]: https://www.doctrine-project.org/
+[DBAL]: https://www.doctrine-project.org/projects/dbal.html
+[ORM]: https://www.doctrine-project.org/projects/orm.html
 [BooBoo]: https://github.com/thephpleague/booboo
 [FastRoute]: https://github.com/nikic/FastRoute
 [Plates]: https://github.com/thephpleague/plates
