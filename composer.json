@@ -23,7 +23,8 @@
         "webmozart/path-util": "^2.3",
         "mzdr/oh-snap": "^1.0",
         "doctrine/orm": "^2.6",
-        "doctrine/dbal": "^2.7"
+        "doctrine/dbal": "^2.7",
+        "symfony/validator": "^4.1"
     },
     "autoload": {
         "files": ["micro.php"],
