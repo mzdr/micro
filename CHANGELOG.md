@@ -1,3 +1,9 @@
+# [2.1.1]
+###### 2019-09-16
+
+###### Fixed
+- Appending `json` or `php` configuration files could result in keys missing. (#1)
+
 # [2.1.0]
 ###### 2018-05-01
 
@@ -47,6 +53,7 @@ Changing the error formatter in your configuration (e.g. `config()->set('µ.erro
 
 You gotta start somewhere, right? 🌟
 
+[2.1.1]: https://github.com/mzdr/micro/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/mzdr/micro/compare/2.0.2...2.1.0
 [2.0.2]: https://github.com/mzdr/micro/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/mzdr/micro/compare/2.0.0...2.0.1
