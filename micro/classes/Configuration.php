@@ -42,7 +42,7 @@ class Configuration extends Gestalt\Configuration
      */
     protected function parseJson($filename)
     {
-        return json_decode(file_get_contents($filename));
+        return json_decode(file_get_contents($filename), true);
     }
 
     /**
@@ -53,7 +53,7 @@ class Configuration extends Gestalt\Configuration
      */
     protected function parsePhp($filename)
     {
-        return require $filename;
+        return Jasny\arrayify(require $filename);
     }
 
     /**
