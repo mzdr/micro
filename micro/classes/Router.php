@@ -28,9 +28,7 @@ class Router extends RouteCollector
             return [405, $handler];
         }
 
-        call_user_func_array($handler, $data);
-
-        return [200];
+        return [200, call_user_func_array($handler, $data)];
     }
 
     /**
