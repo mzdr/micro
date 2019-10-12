@@ -1,8 +1,20 @@
+# [3.0.0]
+###### 2019-10-12
+
+###### Addded
+- `validator()` function to provide access to Symfony’s validation package ([093c3eb])
+
+###### Changed
+- **BREAKING** Replaced [Medoo] in favor of [Doctrine]’s [DBAL] and [ORM]. ([b9dc841])
+- Return result of routing dispatcher even on success ([380d221])
+
+
 # [2.1.1]
 ###### 2019-09-16
 
 ###### Fixed
-- Appending `json` or `php` configuration files could result in keys missing. (#1)
+- Appending `json` or `php` configuration files could result in keys missing. ([#1])
+
 
 # [2.1.0]
 ###### 2018-05-01
@@ -53,6 +65,7 @@ Changing the error formatter in your configuration (e.g. `config()->set('µ.erro
 
 You gotta start somewhere, right? 🌟
 
+[3.0.0]: https://github.com/mzdr/micro/compare/2.1.1...3.0.0
 [2.1.1]: https://github.com/mzdr/micro/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/mzdr/micro/compare/2.0.2...2.1.0
 [2.0.2]: https://github.com/mzdr/micro/compare/2.0.1...2.0.2
@@ -63,6 +76,10 @@ You gotta start somewhere, right? 🌟
 [Jasny’s PHP functions]: https://github.com/jasny/php-functions
 [Scrapbook]: https://github.com/matthiasmullie/scrapbook
 [Oh Snap!]: https://github.com/mzdr/oh-snap
+[Doctrine]: https://www.doctrine-project.org/
+[DBAL]: https://www.doctrine-project.org/projects/dbal.html
+[ORM]: https://www.doctrine-project.org/projects/orm.html
+[Medoo]: https://medoo.in/
 
 [8b9c210]: https://github.com/mzdr/micro/commit/8b9c210
 [33505bf]: https://github.com/mzdr/micro/commit/33505bf
@@ -71,6 +88,12 @@ You gotta start somewhere, right? 🌟
 [97d1d0a]: https://github.com/mzdr/micro/commit/97d1d0a
 [4998a87]: https://github.com/mzdr/micro/commit/4998a87
 [e526bf0]: https://github.com/mzdr/micro/commit/e526bf0
+[380d221]: https://github.com/mzdr/micro/commit/380d221
+[093c3eb]: https://github.com/mzdr/micro/commit/093c3eb
+[b9dc841]: https://github.com/mzdr/micro/commit/b9dc841
+
+[#1]: https://github.com/mzdr/micro/issues/1
+
 
 [`$objectify()`]: https://github.com/mzdr/micro/blob/ac77047844a6fa306b742910e71834503710ac29/lib/config.php#L100
 [`./bootstrap`]: https://github.com/mzdr/micro/blob/master/bootstrap

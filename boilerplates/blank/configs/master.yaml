@@ -17,38 +17,16 @@
     views: ../views
 
 
-  # Database settings for Medoo.
+  # Database settings for Doctrine.
   #
-  # @see https://medoo.in/doc
+  # @see https://www.doctrine-project.org/projects/doctrine-dbal/en/2.8/reference/configuration.html
   # db:
-    # database_type: sqlite
-    # database_file: ../store/database.db
-
-    # database_type: mysql
-    # database_name: name
-    # server: localhost
-    # username: your_username
-    # password: your_password
-
-    # charset: utf8
-    # port: 3306
-    # prefix: myprefix_
-
-    # Enable logging (Logging is disabled by default for better performance)
-    # logging: true
-
-    # MySQL socket (shouldn't be used with server and port)
-    # socket: /tmp/mysql.sock
-
-    # Driver options for the connection.
-    #
-    # @see http://www.php.net/manual/en/pdo.setattribute.php
-    # option:
-    #   !php/const PDO::ATTR_ERRMODE: !php/const PDO::ERRMODE_EXCEPTION
-
-    # Medoo will execute those commands after connecting to the database for initialization.
-    # command:
-    #   - SET SQL_MODE=ANSI_QUOTES
+  #   driver: pdo_sqlite
+  #   path: ../store/example.db
+  #   proxy:
+  #     path: /tmp
+  #   metadata:
+  #     path: ../entities
 
 
   # Settings for FastRoute.
@@ -114,3 +92,6 @@
     #     path: ../cache/1
     #   - adapter: files
     #     path: ../cache/2
+
+  # Set environment for this configuration.
+  env: development
