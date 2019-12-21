@@ -26,12 +26,9 @@ function template(): Engine
     // See if any paths are provided by the configuration
     $paths = config()->get('µ.paths');
 
-    // Set default path for views directory…
-    $defaultViewsPath = Path::canonicalize((is_string($cwd) ? $cwd : '') . '/../views');
-
     // Create Plates instance and prefer the configured views path,
     // otherwise take the default path as fallback
-    $plates = new Engine($paths->views ?? $defaultViewsPath);
+    $plates = new Engine($paths->views ?? $cwd);
 
     // If folders are given by configuration file, add all of them automatically.
     // @see http://platesphp.com/v3/engine/folders/
