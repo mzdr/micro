@@ -20,7 +20,6 @@
         "league/flysystem": "^1.0",
         "php": "^7.1.3",
         "jasny/php-functions": "^3.2",
-        "webmozart/path-util": "^2.3",
         "mzdr/oh-snap": "^1.0",
         "doctrine/orm": "^2.6",
         "doctrine/dbal": "^2.8",

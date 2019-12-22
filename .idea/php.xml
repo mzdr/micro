@@ -9,9 +9,7 @@
       <path value="$PROJECT_DIR$/vendor/matthiasmullie/scrapbook" />
       <path value="$PROJECT_DIR$/vendor/jasny/php-functions" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/vendor/webmozart/path-util" />
       <path value="$PROJECT_DIR$/vendor/league/booboo" />
-      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/nikic/fast-route" />
       <path value="$PROJECT_DIR$/vendor/mzdr/oh-snap" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />

@@ -4,7 +4,6 @@ namespace µ;
 
 use League\Plates\Engine;
 use League\Plates\Extension\Asset;
-use Webmozart\PathUtil\Path;
 
 /**
  * Provides access to the Plates template engine.
