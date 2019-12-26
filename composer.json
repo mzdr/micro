@@ -1,34 +1,37 @@
 {
-    "name": "mzdr/micro",
-    "description": "A tiny multi-tool for your next big PHP adventure.",
-    "version": "3.0.0",
-    "homepage": "https://mzdr.github.io/micro/",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Sebastian Prein",
-            "email": "hi@sebastianprein.com"
-        }
-    ],
-    "require": {
-        "league/plates": "^3.3",
-        "samrap/gestalt": "^0.3.1",
-        "symfony/yaml": "^4.0",
-        "league/booboo": "^2.0",
-        "nikic/fast-route": "^1.2",
-        "matthiasmullie/scrapbook": "^1.4",
-        "league/flysystem": "^1.0",
-        "php": "^7.1.3",
-        "jasny/php-functions": "^3.2",
-        "mzdr/oh-snap": "^1.0",
-        "doctrine/orm": "^2.6",
-        "doctrine/dbal": "^2.8",
-        "symfony/validator": "^4.1"
-    },
-    "autoload": {
-        "files": ["micro.php"],
-        "psr-4": {
-            "µ\\": "micro/classes/"
-        }
+  "name": "mzdr/micro",
+  "description": "A tiny multi-tool for your next big PHP adventure.",
+  "version": "3.0.0",
+  "homepage": "https://mzdr.github.io/micro/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sebastian Prein",
+      "email": "hi@sebastianprein.com"
     }
+  ],
+  "require": {
+    "league/plates": "^3.3",
+    "samrap/gestalt": "^0.3.1",
+    "symfony/yaml": "^4.0",
+    "league/booboo": "^2.0",
+    "nikic/fast-route": "^1.2",
+    "matthiasmullie/scrapbook": "^1.4",
+    "league/flysystem": "^1.0",
+    "php": "^7.1.3",
+    "jasny/php-functions": "^3.2",
+    "mzdr/oh-snap": "^1.0",
+    "doctrine/orm": "^2.6",
+    "doctrine/dbal": "^2.8",
+    "symfony/validator": "^4.1",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "files": [
+      "micro.php"
+    ],
+    "psr-4": {
+      "µ\\": "micro/classes/"
+    }
+  }
 }

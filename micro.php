@@ -2,7 +2,7 @@
 
 namespace µ;
 
-const VERSION = '3.0.0';
+define('VERSION', json_decode(file_get_contents(__DIR__ . '/composer.json'))->version);
 
 foreach ([
     'cache',
