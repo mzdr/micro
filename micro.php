@@ -11,7 +11,8 @@ foreach ([
     'error',
     'router',
     'template',
-    'validator'
+    'validator',
+    'http'
 ] as $file) {
     require_once __DIR__ . "/micro/functions/$file.php";
 }
