@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace µ;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
@@ -37,7 +39,7 @@ class Database
     {
         $this->connection = DriverManager::getConnection((array) $config);
 
-        $isDevMode = in_array(strtolower($env), ['prod', 'production', 'live']) === false;
+        $isDevMode = in_array(strtolower($env ?? ''), ['prod', 'production', 'live']) === false;
         $proxyDir = $config->proxy->path ?? null;
         $cache = null;
         $useSimpleAnnotationReader = $config->metadata->useSimple ?? true;
@@ -51,7 +53,7 @@ class Database
                 $useSimpleAnnotationReader
             ];
 
-            switch (strtolower($config->metadata->driver ?? null)) {
+            switch (strtolower($config->metadata->driver ?? '')) {
                 case 'xml':
                     $this->config = Setup::createXMLMetadataConfiguration(...$args);
                     break;

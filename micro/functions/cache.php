@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace µ;
 
 use CouchbaseCluster;
@@ -31,7 +33,7 @@ function cache()
     }
 
     $createCache = function ($config) {
-        switch (strtolower($config->adapter)) {
+        switch (strtolower($config->adapter ?? '')) {
             case 'memcached':
                 $client = new Memcached();
                 $client->addServer($config->host, $config->port);

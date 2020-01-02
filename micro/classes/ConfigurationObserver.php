@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace µ;
 
 use Gestalt\Util\Observable;
