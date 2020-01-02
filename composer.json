@@ -1,7 +1,7 @@
 {
   "name": "mzdr/micro",
   "description": "A tiny multi-tool for your next big PHP adventure.",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "homepage": "https://mzdr.github.io/micro/",
   "license": "MIT",
   "authors": [
