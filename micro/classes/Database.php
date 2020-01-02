@@ -6,9 +6,11 @@ namespace µ;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 
 class Database
@@ -17,36 +19,41 @@ class Database
     /**
      * @var Connection
      */
-    protected $connection;
+    protected Connection $connection;
 
     /**
      * @var Configuration
      */
-    protected $config;
+    protected Configuration $config;
 
     /**
      * @var EntityManager
      */
-    protected $entityManager;
+    protected EntityManager $entityManager;
 
     /**
      * Database constructor.
      *
      * @param object $config Doctrine configuration.
      * @param string $env Current environment we’re running on.
+     * @throws DBALException
+     * @throws ORMException
      */
     public function __construct($config, $env)
     {
-        $this->connection = DriverManager::getConnection((array) $config);
+        if (isset($config->path)) {
+            $config->path = root()->getPath($config->path);
+        }
 
+        $this->connection = DriverManager::getConnection((array) $config);
         $isDevMode = in_array(strtolower($env ?? ''), ['prod', 'production', 'live']) === false;
         $proxyDir = $config->proxy->path ?? null;
         $cache = null;
-        $useSimpleAnnotationReader = $config->metadata->useSimple ?? true;
+        $useSimpleAnnotationReader = $config->metadata->useSimple ?? false;
 
         if (isset($config->metadata)) {
             $args = [
-                (array) ($config->metadata->path ?? null),
+                (array) (root()->getPath($config->metadata->path) ?? null),
                 $isDevMode,
                 $proxyDir,
                 $cache,

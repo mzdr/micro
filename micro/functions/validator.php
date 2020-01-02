@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 function validator(): ValidatorInterface
 {
+    /** @var ValidatorInterface $validator Validator instance. */
     static $validator;
 
     if ($validator instanceof ValidatorInterface === true) {

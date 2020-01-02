@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace µ;
 
 use League\BooBoo\BooBoo;
+use League\BooBoo\Exception\NoFormattersRegisteredException;
 use League\BooBoo\Formatter\CommandLineFormatter;
 use League\BooBoo\Formatter\HtmlFormatter;
 use mzdr\OhSnap\Formatter\PrettyFormatter;
@@ -14,10 +15,12 @@ use mzdr\OhSnap\Formatter\PrettyFormatter;
  * and formatters for viewing and managing errors in development and production.
  *
  * @return BooBoo
+ * @throws NoFormattersRegisteredException
  * @see https://github.com/thephpleague/booboo/
  */
 function error(): BooBoo
 {
+    /** @var BooBoo $eh BooBoo instance. */
     static $eh;
 
     if ($eh instanceof BooBoo === true) {

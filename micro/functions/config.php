@@ -12,6 +12,7 @@ namespace µ;
  */
 function config(): Configuration
 {
+    /** @var Configuration $config Configuration instance. */
     static $config;
 
     if ($config instanceof Configuration === true) {

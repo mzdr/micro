@@ -15,6 +15,7 @@ use FastRoute\RouteParser\Std as RouteParser;
  */
 function router(): Router
 {
+    /** @var Router $router Router instance. */
     static $router;
 
     if ($router instanceof Router === true) {

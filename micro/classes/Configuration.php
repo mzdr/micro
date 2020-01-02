@@ -18,7 +18,7 @@ class Configuration extends Gestalt\Configuration
      *
      * @var array
      */
-    protected $parsers = [
+    protected array $parsers = [
         'ini' => 'parseIni',
         'json' => 'parseJson',
         'php' => 'parsePhp',

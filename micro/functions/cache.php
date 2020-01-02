@@ -18,8 +18,9 @@ use Redis;
  * @return object|null
  * @see https://github.com/matthiasmullie/scrapbook
  */
-function cache()
+function cache(): ?object
 {
+    /** @var ?object $cache Cache instance. */
     static $cache;
 
     if (is_object($cache) === true) {

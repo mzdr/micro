@@ -11,6 +11,7 @@ namespace µ;
  */
 function http(): HTTP
 {
+    /** @var HTTP $http HTTP instance. */
     static $http;
 
     if ($http instanceof HTTP === true) {

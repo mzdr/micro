@@ -146,11 +146,12 @@ class HTTP
     /**
      * Returns the path part of the current request.
      *
+     * @param null $uri Uri to retrieve path from.
      * @return string
      */
-    public function getPath(): string
+    public function getPath($uri = null): string
     {
-        return rawurldecode(strtok($_SERVER['REQUEST_URI'] ?? '', '?'));
+        return rawurldecode(strtok($uri ?? $_SERVER['REQUEST_URI'] ?? '', '?'));
     }
 
     /**

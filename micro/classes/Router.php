@@ -42,8 +42,8 @@ class Router extends RouteCollector
      */
     public function dispatch(string $httpMethod = null, string $uri = null)
     {
-        $httpMethod = $httpMethod ?? $_SERVER['REQUEST_METHOD'];
-        $uri = rawurldecode(strtok($uri ?? $_SERVER['REQUEST_URI'], '?'));
+        $httpMethod = strtoupper($httpMethod ?? http()->getMethod());
+        $uri = http()->getPath($uri);
         $data = $this->getData();
         $useCache = config()->get('µ.router.cache', false);
 
@@ -58,6 +58,8 @@ class Router extends RouteCollector
         if (isset($cacheFile) === false) {
             throw new LogicException('Must specify “router.cacheFile” option when caching is enabled.');
         }
+
+        $cacheFile = root()->getPath($cacheFile);
 
         if (file_exists($cacheFile) === false) {
             file_put_contents(

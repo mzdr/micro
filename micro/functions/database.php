@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace µ;
 
+use Doctrine\DBAL\DBALException;
+use Doctrine\ORM\ORMException;
 use RuntimeException;
 
 /**
@@ -11,10 +13,13 @@ use RuntimeException;
  * Doctrine’s DBAL and ORM.
  *
  * @return Database
+ * @throws DBALException
+ * @throws ORMException
  * @see https://www.doctrine-project.org/
  */
 function db(): Database
 {
+    /** @var Database $db Database instance. */
     static $db;
 
     if ($db instanceof Database === true) {

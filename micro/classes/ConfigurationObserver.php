@@ -21,7 +21,7 @@ class ConfigurationObserver implements ObserverInterface
      *
      * @var array
      */
-    private $formatters = [
+    private array $formatters = [
         'html'       => HtmlFormatter::class,
         'html_table' => HtmlTableFormatter::class,
         'json'       => JsonFormatter::class,
@@ -35,7 +35,7 @@ class ConfigurationObserver implements ObserverInterface
      *
      * @var AbstractFormatter|null
      */
-    private $currentFormatter = null;
+    private ?AbstractFormatter $currentFormatter = null;
 
     /**
      * The update function that is getting called once the observer
