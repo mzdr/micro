@@ -42,7 +42,7 @@ class Database
     public function __construct($config, $env)
     {
         if (isset($config->path)) {
-            $config->path = root()->getPath($config->path);
+            $config->path = root()->resolve($config->path);
         }
 
         $this->connection = DriverManager::getConnection((array) $config);
@@ -53,7 +53,7 @@ class Database
 
         if (isset($config->metadata)) {
             $args = [
-                (array) (root()->getPath($config->metadata->path) ?? null),
+                (array) (root()->resolve($config->metadata->path) ?? null),
                 $isDevMode,
                 $proxyDir,
                 $cache,

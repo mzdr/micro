@@ -34,7 +34,7 @@ function template(): Engine
         foreach ($paths->folders as $name => $folder) {
             [$path, $fallback] = (array) $folder + ['', false];
 
-            $plates->addFolder($name, root()->getPath($path), $fallback);
+            $plates->addFolder($name, root()->resolve($path), $fallback);
         }
     }
 
@@ -42,7 +42,7 @@ function template(): Engine
     // @see http://platesphp.com/v3/extensions/asset/
     if (isset($paths->assets)) {
         $plates->loadExtension(
-            new Asset(root()->getPath($paths->assets), true)
+            new Asset(root()->resolve($paths->assets), true)
         );
     }
 

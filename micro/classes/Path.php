@@ -50,34 +50,19 @@ class Path
             );
         }
 
-        $this->path = realpath($path) . DIRECTORY_SEPARATOR;
+        $this->path = realpath($path);
 
         return $this;
     }
 
     /**
-     * Returns the current set path. Optionally you can provide a path that will be used instead if it exists,
-     * otherwise it will be appended to the current one.
+     * Returns the current set path.
      *
-     * @param string $path Path to prefer or append.
      * @return string
      */
-    public function getPath(string $path): string
+    public function getPath(): string
     {
-        if (is_readable($path) === true) {
-            return $path;
-        }
-
-        $compoundPath = $this->path . $path;
-        $exists = realpath($compoundPath);
-
-        if ($exists !== false) {
-            return $exists;
-        }
-
-        throw new InvalidArgumentException(
-            sprintf('Given path “%s” or root’ed path “%s” does not exist.', $path, $compoundPath)
-        );
+        return $this->path;
     }
 
     /**
@@ -91,9 +76,45 @@ class Path
     {
         return json_decode(
             file_get_contents(
-                $this->getPath($path)
+                $this->resolve($path)
             ),
             ...$args
         );
+    }
+
+    /**
+     * Returns the given path as an absolute one if it’s readable. Otherwise it will return the given path appended to
+     * the currently set one no matter if it exists or not.
+     *
+     * @param string $path Path to resolve.
+     * @return string
+     */
+    public function resolve(string $path): string
+    {
+        if (is_readable($path) === true) {
+            return realpath($path);
+        }
+
+        $path = explode('/', $this->path . DIRECTORY_SEPARATOR . trim($path, '/'));
+        $stack = [];
+
+        foreach ($path as $segment) {
+
+            // Ignore this segment, remove last segment from stack
+            if ($segment === '..' && $segment === '/') {
+                array_pop($stack);
+
+                continue;
+            }
+
+            // Ignore this segment
+            if ($segment === '.') {
+                continue;
+            }
+
+            $stack[] = $segment;
+        }
+
+        return implode('/', $stack);
     }
 }

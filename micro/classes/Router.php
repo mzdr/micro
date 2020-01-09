@@ -59,7 +59,7 @@ class Router extends RouteCollector
             throw new LogicException('Must specify “router.cacheFile” option when caching is enabled.');
         }
 
-        $cacheFile = root()->getPath($cacheFile);
+        $cacheFile = root()->resolve($cacheFile);
 
         if (file_exists($cacheFile) === false) {
             file_put_contents(
