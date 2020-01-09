@@ -31,7 +31,7 @@ class HTTP
     }
 
     /**
-     * Collect data from the cookies in correct order.
+     * Collect data from the cookies superglobal in correct order.
      *
      * @param array $keys Array of keys to get.
      * @return array
@@ -39,6 +39,17 @@ class HTTP
     public function cookie(array $keys): array
     {
         return $this->getFromPayload($keys, $_COOKIE ?? []);
+    }
+
+    /**
+     * Collect data from the files superglobal in correct order.
+     *
+     * @param array $keys Array of keys to get.
+     * @return array
+     */
+    public function files(array $keys): array
+    {
+        return $this->getFromPayload($keys, $_FILES ?? []);
     }
 
     /**
