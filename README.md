@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/mzdr/micro">
-        <img src="https://mzdr.github.io/assets/images/icons/micro.svg" width="256" alt="micro">
+        <img src="https://mzdr.github.io/micro/icon.svg" width="256" alt="micro">
     </a><br><br>
 </p>
 <p align="center">A <em>tiny</em> multi-tool for your next big <a href="http://php.net/">PHP</a> adventure.<sup><a name="a1" href="#f1">1</a></sup></p><br>
